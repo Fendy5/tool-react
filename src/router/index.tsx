@@ -5,10 +5,13 @@
  */
 import React, { ReactElement } from 'react'
 import { Home } from '../pages/home'
+import { FieldStringOutlined, LaptopOutlined } from '@ant-design/icons'
+import { RandomString } from '../pages/random-string'
 
 export interface RouterConfig {
   path: string
   title: string
+  icon?: React.ReactNode
   element?: ReactElement<any, any>
   children?: RouterConfig[]
 }
@@ -17,16 +20,19 @@ const routes: RouterConfig[] = [
   {
     path: '/',
     title: '首页',
+    icon: <LaptopOutlined />,
     element: <Home />
   },
   {
     path: '/random-string',
     title: '随机字符串',
-    element: <h1>1234</h1>
+    icon: <FieldStringOutlined />,
+    element: <RandomString />
   },
   {
     path: '/about',
     title: 'about',
+    icon: <LaptopOutlined />,
     children: [
       {
         path: '/about/about1',
@@ -42,6 +48,7 @@ const routes: RouterConfig[] = [
   },
   {
     path: '/home',
+    icon: <LaptopOutlined />,
     title: 'images',
     element: <h1>1234</h1>
   }

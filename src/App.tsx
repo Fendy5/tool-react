@@ -3,9 +3,7 @@ import styled from '@emotion/styled'
 import { Link, BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import 'styles/index.scss'
 import { Layout, Menu } from 'antd'
-import { UserOutlined, LaptopOutlined } from '@ant-design/icons'
 import routes from './router'
-import { RouteLink } from './router/RouteLink'
 const { SubMenu } = Menu
 const { Content, Sider } = Layout
 
@@ -19,7 +17,7 @@ function App() {
             <MyMenu mode="inline" defaultSelectedKeys={['/']} style={{ height: '100%', borderRight: 0 }}>
               {routes.map((route) => {
                 return route.children ? (
-                  <SubMenu key={route.path} icon={<UserOutlined />} title={route.title}>
+                  <SubMenu key={route.path} icon={route.icon} title={route.title}>
                     {route.children.map((r) => (
                       <Menu.Item key={`${r.path}`}>
                         <Link to={r.path}>{r.title}</Link>
@@ -27,7 +25,7 @@ function App() {
                     ))}
                   </SubMenu>
                 ) : (
-                  <Menu.Item key={route.path} icon={<LaptopOutlined />}>
+                  <Menu.Item key={route.path} icon={route.icon}>
                     <Link to={route.path}>{route.title}</Link>
                   </Menu.Item>
                 )

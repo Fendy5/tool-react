@@ -7,10 +7,12 @@ import React, { ReactElement } from 'react'
 import { Home } from '../pages/home'
 import { FieldStringOutlined, LaptopOutlined } from '@ant-design/icons'
 import { RandomString } from '../pages/random-string'
+import { NotFound } from '../pages/NotFound'
 
 export interface RouterConfig {
   path: string
-  title: string
+  title?: string
+  hidden?: boolean
   icon?: React.ReactNode
   element?: ReactElement<any, any>
   children?: RouterConfig[]
@@ -27,7 +29,7 @@ const routes: RouterConfig[] = [
     path: '/random-string',
     title: '随机字符串',
     icon: <FieldStringOutlined />,
-    element: <RandomString />
+    element: <RandomString title={"产生随机字符串 | Fendy's Tools"} />
   },
   {
     path: '/about',
@@ -51,6 +53,11 @@ const routes: RouterConfig[] = [
     icon: <LaptopOutlined />,
     title: 'images',
     element: <h1>1234</h1>
+  },
+  {
+    path: '*',
+    hidden: true,
+    element: <NotFound />
   }
 ]
 

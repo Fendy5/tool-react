@@ -3,7 +3,7 @@
  * @CreateTime 2022/1/5 16:30
  * @Description
  */
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSetTitle } from 'utils'
 import styled from '@emotion/styled'
 import { Card } from '../../components/lib'
@@ -17,21 +17,13 @@ const checkOptions: Option[] = [
   { label: '数字类型', value: 'number' }
 ]
 
-const defaultCheckedOptions = ['lowerCase', 'capital', 'special', 'number']
+const defaultCheckedOptions = ['lowerCase', 'capital', 'number']
 
 export const RandomString = ({ title }: { title: string }) => {
   useSetTitle(title)
 
   const [form] = Form.useForm()
   const [res, setRes] = useState('结果')
-
-  useEffect(() => {
-    form.setFieldsValue({
-      len: 8,
-      checkedList: defaultCheckedOptions
-    })
-    // eslint-disable-next-line
-  }, [])
 
   const onFinish = (value: FormProps) => {
     const str = value.checkedList.map((type) => StringType[type]).join('')
@@ -46,7 +38,7 @@ export const RandomString = ({ title }: { title: string }) => {
     <Container>
       <Card>
         <Title>产生随机字符串</Title>
-        <Form form={form} onFinish={onFinish}>
+        <Form initialValues={{ checkedList: defaultCheckedOptions, len: 8 }} form={form} onFinish={onFinish}>
           <Form.Item name="checkedList">
             <MyCheckbox options={checkOptions} />
           </Form.Item>
@@ -70,11 +62,12 @@ export const RandomString = ({ title }: { title: string }) => {
 }
 
 const Container = styled.div`
-  width: 32rem;
+  width: 80%;
+  max-width: 32rem;
   position: absolute;
   left: 50%;
-  top: 40%;
-  transform: translate(-50%, -60%);
+  top: 50%;
+  transform: translate(-50%, -50%);
 `
 
 const Title = styled.h2`
@@ -101,4 +94,6 @@ const ResText = styled.span`
   background-color: #c1f4cd;
   color: #673ab6;
   padding: 8px 16px;
+  word-break: break-all;
+  line-height: 2;
 `

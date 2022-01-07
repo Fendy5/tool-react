@@ -10,20 +10,22 @@ import longLogo from 'assets/images/logo-fendy5.png'
 import { Layout, Menu } from 'antd'
 import routes from '../router'
 import styled from '@emotion/styled'
+import { isMobile } from '../utils'
 const { SubMenu } = Menu
 const { Content, Sider, Footer } = Layout
 
 export const MyLayout = () => {
-  const [collapsed, setCollapsed] = useState(false)
+  const [collapsed, setCollapsed] = useState(isMobile())
 
   const currentRoute = useLocation().pathname
 
   const toggleSider = () => {
     setCollapsed(!collapsed)
   }
+
   return (
     <App>
-      <Sider collapsed={collapsed} trigger={null} collapsedWidth={0} collapsible>
+      <MySider collapsed={collapsed} trigger={null} collapsedWidth={0} collapsible>
         <Logo>
           <img src={longLogo} alt="" />
         </Logo>
@@ -34,13 +36,17 @@ export const MyLayout = () => {
                 <SubMenu key={route.path} icon={route.icon} title={route.title}>
                   {route.children.map((r) => (
                     <Menu.Item key={`${r.path}`}>
-                      <Link to={r.path}>{r.title}</Link>
+                      <Link onClick={isMobile() ? toggleSider : () => {}} to={r.path}>
+                        {r.title}
+                      </Link>
                     </Menu.Item>
                   ))}
                 </SubMenu>
               ) : (
                 <Menu.Item key={route.path} icon={route.icon}>
-                  <Link to={{ pathname: route.path }}>{route.title}</Link>
+                  <Link onClick={isMobile() ? toggleSider : () => {}} to={{ pathname: route.path }}>
+                    {route.title}
+                  </Link>
                 </Menu.Item>
               )
             } else {
@@ -48,7 +54,7 @@ export const MyLayout = () => {
             }
           })}
         </MyMenu>
-      </Sider>
+      </MySider>
       <Layout>
         <Header>
           {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
@@ -56,7 +62,10 @@ export const MyLayout = () => {
           })}
           <span style={{ paddingLeft: '8px' }}>Fendy's Tools</span>
         </Header>
-        <MyContent>
+        <MyContent
+          style={(!isMobile() && collapsed) || isMobile() ? { marginLeft: 0 } : { marginLeft: '200px' }}
+          onClick={isMobile() && !collapsed ? toggleSider : () => {}}
+        >
           <Routes>
             {routes.map((route) =>
               route.children ? (
@@ -87,12 +96,24 @@ const Header = styled.div`
   line-height: 64px;
   box-shadow: 0 5px 15px rgb(0 0 0 / 20%);
   background-color: #673ab6;
+  width: 100%;
+  z-index: 10;
+  position: fixed;
+`
+const MySider = styled(Sider)`
+  position: absolute;
+  z-index: 9;
+  box-shadow: 0 0 20px 0 rgb(0 0 0 / 20%);
+  height: calc(100% - 64px);
+  top: 64px;
 `
 const MyContent = styled(Content)`
   position: relative;
   padding: 24px;
-  margin: 0;
   min-height: 280px;
+  top: 64px;
+  margin-left: 200px;
+  transition: 0.2s;
 `
 const MyMenu = styled(Menu)`
   //box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%) !important;

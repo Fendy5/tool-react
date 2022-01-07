@@ -19,3 +19,7 @@ export const useSetTitle = (title: string, keepOnUnmount: boolean = true) => {
     }
   }, [oldTitle, keepOnUnmount])
 }
+
+export const isMobile = () => {
+  return window.innerWidth <= 768
+}

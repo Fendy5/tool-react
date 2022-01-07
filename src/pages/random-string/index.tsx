@@ -9,6 +9,7 @@ import styled from '@emotion/styled'
 import { Card } from '../../components/lib'
 import { Checkbox, Input, Form, Button } from 'antd'
 import { FormProps, Option, StringType } from 'types/random-string'
+import 'styles/_random-string.scss'
 
 const checkOptions: Option[] = [
   { label: '小写字母', value: 'lowerCase' },
@@ -43,7 +44,12 @@ export const RandomString = ({ title }: { title: string }) => {
             <MyCheckbox options={checkOptions} />
           </Form.Item>
           <MyInput>
-            <Form.Item label="长度" name="len" rules={[{ required: true, message: '请输入字符串长度' }]}>
+            <Form.Item
+              className={'grid-1-4'}
+              label="长度"
+              name="len"
+              rules={[{ required: true, message: '请输入字符串长度' }]}
+            >
               <Input min={1} type={'number'} placeholder={'请输入字符串长度'} />
             </Form.Item>
           </MyInput>
@@ -66,8 +72,8 @@ const Container = styled.div`
   max-width: 32rem;
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 40%;
+  transform: translate(-50%, -40%);
 `
 
 const Title = styled.h2`
@@ -86,7 +92,7 @@ const MyCheckbox = styled(Checkbox.Group)`
 
 const MyInput = styled.div`
   margin: 16px auto;
-  width: 16rem;
+  max-width: 16rem;
 `
 
 const ResText = styled.span`

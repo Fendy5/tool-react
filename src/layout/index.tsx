@@ -56,13 +56,7 @@ export const MyLayout = () => {
           })}
           <span style={{ paddingLeft: '8px' }}>Fendy's Tools</span>
         </Header>
-        <Content
-          style={{
-            padding: 24,
-            margin: 0,
-            minHeight: 280
-          }}
-        >
+        <MyContent>
           <Routes>
             {routes.map((route) =>
               route.children ? (
@@ -73,8 +67,10 @@ export const MyLayout = () => {
             )}
             <Route path={'/'} element={<Navigate to={'/home'} />} />
           </Routes>
-        </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        </MyContent>
+        <Footer style={{ textAlign: 'center' }}>
+          Fendy'Tools ©2022 Created by <a href="https://fendy5.cn">Fendy</a>{' '}
+        </Footer>
       </Layout>
     </App>
   )
@@ -91,6 +87,12 @@ const Header = styled.div`
   line-height: 64px;
   box-shadow: 0 5px 15px rgb(0 0 0 / 20%);
   background-color: #673ab6;
+`
+const MyContent = styled(Content)`
+  position: relative;
+  padding: 24px;
+  margin: 0;
+  min-height: 280px;
 `
 const MyMenu = styled(Menu)`
   //box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%) !important;

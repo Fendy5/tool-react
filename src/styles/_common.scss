@@ -4,3 +4,16 @@
 .absolute {
   position: absolute;
 }
+.w-full {
+  width: 100%;
+}
+
+$pd: 8,16,24;
+@each $i in $pd{
+  .pt-#{$i} {
+    padding-top: $i+px;
+  }
+  .pb-#{$i} {
+    padding-bottom: $i+px;
+  }
+}

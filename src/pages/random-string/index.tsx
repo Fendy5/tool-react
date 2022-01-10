@@ -6,7 +6,7 @@
 import React, { useState } from 'react'
 import { useSetTitle } from 'utils'
 import styled from '@emotion/styled'
-import { Card } from '../../components/lib'
+import { Card, Container, ResText, Title } from 'components/lib'
 import { Checkbox, Input, Form, Button } from 'antd'
 import { FormProps, Option, StringType } from 'types/random-string'
 import 'styles/_random-string.scss'
@@ -41,7 +41,7 @@ export const RandomString = ({ title }: { title: string }) => {
         <Title>产生随机字符串</Title>
         <Form initialValues={{ checkedList: defaultCheckedOptions, len: 8 }} form={form} onFinish={onFinish}>
           <Form.Item name="checkedList">
-            <MyCheckbox options={checkOptions} />
+            <MyCheckbox className={'w-full'} options={checkOptions} />
           </Form.Item>
           <MyInput>
             <Form.Item
@@ -67,20 +67,6 @@ export const RandomString = ({ title }: { title: string }) => {
   )
 }
 
-const Container = styled.div`
-  width: 80%;
-  max-width: 32rem;
-  position: absolute;
-  left: 50%;
-  top: 40%;
-  transform: translate(-50%, -40%);
-`
-
-const Title = styled.h2`
-  text-align: center;
-  margin-bottom: 16px;
-`
-
 const MyCheckbox = styled(Checkbox.Group)`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -93,13 +79,4 @@ const MyCheckbox = styled(Checkbox.Group)`
 const MyInput = styled.div`
   margin: 16px auto;
   max-width: 16rem;
-`
-
-const ResText = styled.span`
-  border-radius: 4px;
-  background-color: #c1f4cd;
-  color: #673ab6;
-  padding: 8px 16px;
-  word-break: break-all;
-  line-height: 2;
 `

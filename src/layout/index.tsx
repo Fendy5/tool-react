@@ -77,9 +77,9 @@ export const MyLayout = () => {
             <Route path={'/'} element={<Navigate to={'/home'} />} />
           </Routes>
         </MyContent>
-        <Footer style={{ textAlign: 'center' }}>
+        <MyFooter style={(!isMobile() && collapsed) || isMobile() ? { marginLeft: 0 } : { marginLeft: '200px' }}>
           Fendy'Tools ©2022 Created by <a href="https://fendy5.cn">Fendy</a>{' '}
-        </Footer>
+        </MyFooter>
       </Layout>
     </App>
   )
@@ -113,7 +113,11 @@ const MyContent = styled(Content)`
   min-height: 280px;
   top: 64px;
   margin-left: 200px;
-  transition: 0.2s;
+  transition: 0.5s;
+`
+const MyFooter = styled(Footer)`
+  text-align: center;
+  transition: 0.5s;
 `
 const MyMenu = styled(Menu)`
   //box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%) !important;

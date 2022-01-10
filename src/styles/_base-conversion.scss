@@ -1,0 +1,14 @@
+[data-component=base-conversion]{
+  .ant-form-item {
+    width: 250px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  @media (max-width: 768px){
+    .ant-form-item {
+      //width: 150px;
+    }
+  }
+}
+

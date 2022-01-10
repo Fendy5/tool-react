@@ -5,9 +5,10 @@
  */
 import React, { ReactElement } from 'react'
 import { Home } from '../pages/home'
-import { FieldStringOutlined, LaptopOutlined } from '@ant-design/icons'
+import { FieldStringOutlined, LaptopOutlined, createFromIconfontCN } from '@ant-design/icons'
 import { RandomString } from '../pages/random-string'
 import { NotFound } from '../pages/NotFound'
+import { BaseConversion } from '../pages/base-conversion'
 
 export interface RouterConfig {
   path: string
@@ -18,11 +19,15 @@ export interface RouterConfig {
   children?: RouterConfig[]
 }
 
+const IconFont = createFromIconfontCN({
+  scriptUrl: ['//at.alicdn.com/t/font_1968175_hxgxe8wku4l.js']
+})
+
 const routes: RouterConfig[] = [
   {
     path: '/',
     title: '首页',
-    icon: <LaptopOutlined />,
+    icon: <IconFont type={'icon-home'} />,
     element: <Home />
   },
   {
@@ -30,6 +35,12 @@ const routes: RouterConfig[] = [
     title: '随机字符串',
     icon: <FieldStringOutlined />,
     element: <RandomString title={"产生随机字符串 | Fendy's Tools"} />
+  },
+  {
+    path: '/base-conversion',
+    title: '进制转换',
+    icon: <IconFont type={'icon-Field-Binary'} />,
+    element: <BaseConversion title={"进制转换 | Fendy's Tools"} />
   },
   {
     path: '/about',

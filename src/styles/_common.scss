@@ -7,13 +7,26 @@
 .w-full {
   width: 100%;
 }
+.pointer {
+  cursor: pointer;
+}
 
 $pd: 8,16,24;
 @each $i in $pd{
+  .pl-#{$i} {
+    padding-top: $i+px;
+  }
   .pt-#{$i} {
     padding-top: $i+px;
   }
   .pb-#{$i} {
     padding-bottom: $i+px;
+  }
+}
+
+$mg: 8,16,24;
+@each $i in $mg{
+  .ml-#{$i} {
+    margin-left: $i+px;
   }
 }

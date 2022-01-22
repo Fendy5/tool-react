@@ -5,10 +5,11 @@
  */
 import React, { ReactElement } from 'react'
 import { Home } from '../pages/home'
-import { FieldStringOutlined, LaptopOutlined, createFromIconfontCN } from '@ant-design/icons'
+import { FieldStringOutlined, createFromIconfontCN, PictureOutlined } from '@ant-design/icons'
 import { RandomString } from '../pages/random-string'
 import { NotFound } from '../pages/NotFound'
 import { BaseConversion } from '../pages/base-conversion'
+import { ImageConversion } from '../pages/image-conversion'
 
 export interface RouterConfig {
   path: string
@@ -43,28 +44,34 @@ const routes: RouterConfig[] = [
     element: <BaseConversion title={"进制转换 | Fendy's Tools"} />
   },
   {
-    path: '/about',
-    title: 'about',
-    icon: <LaptopOutlined />,
-    children: [
-      {
-        path: '/about/about1',
-        title: 'about1',
-        element: <h1>about1</h1>
-      },
-      {
-        path: '/about/about2',
-        title: 'about2',
-        element: <h2>about2</h2>
-      }
-    ]
+    path: '/image-conversion',
+    title: '图片格式转换',
+    icon: <PictureOutlined />,
+    element: <ImageConversion title={"图片格式转换 | Fendy's Tools"} />
   },
-  {
-    path: '/home',
-    icon: <LaptopOutlined />,
-    title: 'images',
-    element: <h1>1234</h1>
-  },
+  // {
+  //   path: '/about',
+  //   title: 'about',
+  //   icon: <LaptopOutlined />,
+  //   children: [
+  //     {
+  //       path: '/about/about1',
+  //       title: 'about1',
+  //       element: <h1>about1</h1>
+  //     },
+  //     {
+  //       path: '/about/about2',
+  //       title: 'about2',
+  //       element: <h2>about2</h2>
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/home',
+  //   icon: <LaptopOutlined />,
+  //   title: 'images',
+  //   element: <h1>1234</h1>
+  // },
   {
     path: '*',
     hidden: true,

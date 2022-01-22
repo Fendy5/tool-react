@@ -10,8 +10,8 @@ pipeline {
     stage('Build') {
       steps {
         nodejs(nodeJSInstallationName: 'NodeJS 14.17.5', configId: '15077958-c5fc-4bdc-b6ed-803c700399b2') {
-          sh 'cnpm install'
-          sh 'cnpm run build'
+          sh 'yarn install'
+          sh 'yarn build'
         }
       }
     }

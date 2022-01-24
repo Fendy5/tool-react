@@ -10,7 +10,7 @@ import { PictureOutlined } from '@ant-design/icons'
 // import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import { useSetTitle } from 'utils'
 import { RcFile } from 'antd/lib/upload'
-import { transformApi } from '../../apis/image-conversion'
+import { transformApi } from 'apis/image-conversion'
 const { Dragger } = Upload
 
 export const ImageConversion = ({ title }: { title: string }) => {
@@ -30,7 +30,7 @@ export const ImageConversion = ({ title }: { title: string }) => {
     data: {
       '100%': true
     },
-    action: 'http://127.0.0.1:3000/image-api',
+    action: '/image-api',
     beforeUpload: (file: RcFile) => {
       if (!file.type.match(/image\/*/)?.[0]) {
         message.error(`${file.name} 不是有效的图片文件`)

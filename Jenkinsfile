@@ -9,7 +9,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        nodejs(nodeJSInstallationName: 'NodeJS 14.17.5', configId: '15077958-c5fc-4bdc-b6ed-803c700399b2') {
+        nodejs(nodeJSInstallationName: 'NodeJS 16.9.1', configId: '2c822994-4519-4187-90c4-71d6ccee785d') {
           sh 'yarn install'
           sh 'yarn build'
         }
@@ -18,10 +18,8 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        nodejs(nodeJSInstallationName: 'NodeJS 14.17.5', configId: '15077958-c5fc-4bdc-b6ed-803c700399b2') {
-          sh "rm -rf /www/wwwroot/tool.fendy5.cn/dist"
-          sh "mv ./dist /www/wwwroot/tool.fendy5.cn"
-        }
+       sh "rm -rf /www/wwwroot/tool.fendy5.cn/build"
+       sh "mv ./build /www/wwwroot/tool.fendy5.cn"
       }
     }
 

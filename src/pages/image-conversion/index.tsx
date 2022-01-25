@@ -10,7 +10,7 @@ import { PictureOutlined } from '@ant-design/icons'
 // import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import { useSetTitle } from 'utils'
 import { RcFile } from 'antd/lib/upload'
-import { transformApi } from 'apis/image-conversion'
+import { transformApi } from 'api/image-conversion'
 const { Dragger } = Upload
 
 export const ImageConversion = ({ title }: { title: string }) => {

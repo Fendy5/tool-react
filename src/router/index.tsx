@@ -5,11 +5,12 @@
  */
 import React, { ReactElement } from 'react'
 import { Home } from '../pages/home'
-import { FieldStringOutlined, createFromIconfontCN, PictureOutlined } from '@ant-design/icons'
+import { FieldStringOutlined, PictureOutlined } from '@ant-design/icons'
 import { RandomString } from '../pages/random-string'
 import { NotFound } from '../pages/NotFound'
 import { BaseConversion } from '../pages/base-conversion'
 import { ImageConversion } from '../pages/image-conversion'
+import { IconFont } from 'components/lib'
 
 export interface RouterConfig {
   path: string
@@ -19,10 +20,6 @@ export interface RouterConfig {
   element?: ReactElement<any, any>
   children?: RouterConfig[]
 }
-
-const IconFont = createFromIconfontCN({
-  scriptUrl: ['//at.alicdn.com/t/font_1968175_hxgxe8wku4l.js']
-})
 
 const routes: RouterConfig[] = [
   {

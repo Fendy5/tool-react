@@ -4,12 +4,14 @@
  * @Description
  */
 import styled from '@emotion/styled'
+import { createFromIconfontCN } from '@ant-design/icons'
 
 export const Card = styled.div`
   box-shadow: 0 0 10px 3px rgb(0 0 0 / 10%);
   //margin-top: 30px;
   border-radius: 4px;
   padding: 24px;
+  margin-bottom: 24px;
 `
 
 export const Container = styled.div`
@@ -34,3 +36,7 @@ export const ResText = styled.span`
   word-break: break-all;
   line-height: 2;
 `
+
+export const IconFont = createFromIconfontCN({
+  scriptUrl: ['//at.alicdn.com/t/font_1968175_hxgxe8wku4l.js']
+})

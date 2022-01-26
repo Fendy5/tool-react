@@ -5,6 +5,9 @@
 .align-center {
   align-items: center;
 }
+.flex {
+  display: flex;
+}
 
 .text-center {
   text-align: center;
@@ -22,7 +25,7 @@
 $pd: 8,16,24;
 @each $i in $pd{
   .pl-#{$i} {
-    padding-top: $i+px;
+    padding-left: $i+px;
   }
   .pt-#{$i} {
     padding-top: $i+px;

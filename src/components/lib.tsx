@@ -12,6 +12,7 @@ export const Card = styled.div`
   border-radius: 4px;
   padding: 24px;
   margin-bottom: 24px;
+  background: white;
 `
 
 export const Container = styled.div`
@@ -38,5 +39,13 @@ export const ResText = styled.span`
 `
 
 export const IconFont = createFromIconfontCN({
-  scriptUrl: ['//at.alicdn.com/t/font_1968175_hxgxe8wku4l.js']
+  scriptUrl: ['//at.alicdn.com/t/font_1968175_culfmt4cxq.js']
 })
+
+export const MyIcon = styled(IconFont)<{
+  fontSize?: string
+  color?: string
+}>`
+  font-size: ${(props) => props.fontSize};
+  color: ${(props) => props.color};
+`

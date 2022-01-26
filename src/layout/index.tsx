@@ -26,9 +26,11 @@ export const MyLayout = () => {
   return (
     <App>
       <MySider collapsed={collapsed} trigger={null} collapsedWidth={0} collapsible>
-        <Logo>
-          <img src={longLogo} alt="" />
-        </Logo>
+        <Link to={'/'}>
+          <Logo>
+            <img src={longLogo} alt="" />
+          </Logo>
+        </Link>
         <MyMenu mode="inline" defaultSelectedKeys={[currentRoute]} style={{ height: '100%', borderRight: 0 }}>
           {routes.map((route) => {
             if (!route.hidden) {
@@ -60,7 +62,9 @@ export const MyLayout = () => {
           {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
             onClick: toggleSider
           })}
-          <span style={{ paddingLeft: '8px' }}>Fendy's Tools</span>
+          <Link style={{ color: 'white' }} to={'/'}>
+            <span style={{ paddingLeft: '8px' }}>Fendy's Tools</span>
+          </Link>
         </Header>
         <MyContent
           style={(!isMobile() && collapsed) || isMobile() ? { marginLeft: 0 } : { marginLeft: '200px' }}

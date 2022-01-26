@@ -5,9 +5,15 @@
     font-weight: bold;
   }
   & p {
-    height: 44px;
+    //height: 44px;
     margin-bottom: 0;
     font-size: 14px;
-    color: #999aaa
+    color: #999aaa;
+
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 }

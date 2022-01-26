@@ -7,7 +7,7 @@ import React from 'react'
 import { useSetTitle } from 'utils'
 import { Col, Row } from 'antd'
 import { Card, MyIcon } from 'components/lib'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import 'styles/_home.scss'
 
 export const Home = () => {
@@ -44,9 +44,9 @@ export const Home = () => {
             <Card className={'home'}>
               {i.icon}
               <div className={'pl-8'}>
-                <NavLink className={'pb-8'} replace to={i.url}>
+                <Link className={'pb-8'} replace to={i.url}>
                   {i.name}
-                </NavLink>
+                </Link>
                 <p>{i.desc}</p>
               </div>
             </Card>

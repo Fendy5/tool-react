@@ -31,7 +31,12 @@ export const MyLayout = () => {
             <img src={longLogo} alt="" />
           </Logo>
         </Link>
-        <MyMenu mode="inline" defaultSelectedKeys={[currentRoute]} style={{ height: '100%', borderRight: 0 }}>
+        <MyMenu
+          mode="inline"
+          selectedKeys={[currentRoute]}
+          defaultSelectedKeys={[currentRoute]}
+          style={{ height: '100%', borderRight: 0 }}
+        >
           {routes.map((route) => {
             if (!route.hidden) {
               return route.children ? (

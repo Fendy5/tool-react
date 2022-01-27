@@ -125,6 +125,8 @@ const MyContent = styled(Content)`
   transition: 0.5s;
 `
 const MyFooter = styled(Footer)`
+  z-index: 99;
+  background: unset;
   text-align: center;
   transition: 0.5s;
 `

@@ -21,6 +21,12 @@
 .pointer {
   cursor: pointer;
 }
+.transform-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 $pd: 8,16,24;
 @each $i in $pd{

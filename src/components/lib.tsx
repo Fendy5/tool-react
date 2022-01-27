@@ -39,7 +39,7 @@ export const ResText = styled.span`
 `
 
 export const IconFont = createFromIconfontCN({
-  scriptUrl: ['//at.alicdn.com/t/font_1968175_culfmt4cxq.js']
+  scriptUrl: ['//at.alicdn.com/t/font_1968175_2arlfcdj64v.js']
 })
 
 export const MyIcon = styled(IconFont)<{

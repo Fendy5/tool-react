@@ -10,7 +10,8 @@ import { RandomString } from '../pages/random-string'
 import { NotFound } from '../pages/NotFound'
 import { BaseConversion } from '../pages/base-conversion'
 import { ImageConversion } from '../pages/image-conversion'
-import { IconFont } from 'components/lib'
+import { IconFont, MyIcon } from 'components/lib'
+import { More } from '../pages/more'
 
 export interface RouterConfig {
   path: string
@@ -69,6 +70,12 @@ const routes: RouterConfig[] = [
   //   title: 'images',
   //   element: <h1>1234</h1>
   // },
+  {
+    path: '/more',
+    title: '更多工具',
+    icon: <MyIcon type={'icon-gengduo'} />,
+    element: <More />
+  },
   {
     path: '*',
     hidden: true,

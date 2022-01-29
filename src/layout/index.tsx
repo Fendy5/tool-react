@@ -117,6 +117,7 @@ const MySider = styled(Sider)`
   top: 64px;
 `
 const MyContent = styled(Content)`
+  background: #fff;
   position: relative;
   padding: 24px;
   min-height: 280px;

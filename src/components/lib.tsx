@@ -7,7 +7,7 @@ import styled from '@emotion/styled'
 import { createFromIconfontCN } from '@ant-design/icons'
 
 export const Card = styled.div`
-  box-shadow: 0 0 10px 3px rgb(0 0 0 / 10%);
+  box-shadow: 0 0 10px 5px rgb(0 0 0 / 5%);
   //margin-top: 30px;
   border-radius: 4px;
   padding: 24px;

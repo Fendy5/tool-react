@@ -4,13 +4,14 @@
  * @Description
  */
 import React, { useState } from 'react'
-import { Upload, message, Form, Select, Button } from 'antd'
+import { Upload, message, Form, Select, Button, InputNumber, Space } from 'antd'
 import { Card, Container, ResText, Title } from 'components/lib'
 import { PictureOutlined } from '@ant-design/icons'
 // import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import { useSetTitle } from 'utils'
 import { RcFile } from 'antd/lib/upload'
 import { transformApi } from 'api/image-conversion'
+import { ImageConversionFormProp } from '../../types/image-conversion'
 const { Dragger } = Upload
 
 export const ImageConversion = ({ title }: { title: string }) => {
@@ -63,12 +64,17 @@ export const ImageConversion = ({ title }: { title: string }) => {
     setSize(size)
   }
 
-  const handleFinish = (form: any) => {
-    form.imageUrl = imageUrl
-    transformApi(form).then((value) => {
-      const { downloadLink } = value.data
-      setDownloadLink(downloadLink)
-    })
+  const handleFinish = async (form: ImageConversionFormProp) => {
+    console.log(form)
+    if (imageUrl) {
+      form.imageUrl = imageUrl
+      transformApi(form).then((value) => {
+        const { downloadLink } = value.data
+        setDownloadLink(downloadLink)
+      })
+    } else {
+      message.error('请先选择图片')
+    }
   }
 
   const downloadImage = () => {
@@ -86,11 +92,18 @@ export const ImageConversion = ({ title }: { title: string }) => {
   const sizeList = [16, 32, 64, 128, 256, 512]
   const [targetType, setTargetType] = useState('')
   const [size, setSize] = useState<number | undefined>(undefined)
+  const [compressionRate, setCompressionRate] = useState(100)
   return (
     <Container>
       <Card>
         <Title>图片格式转换</Title>
-        <Form form={form} colon layout={'horizontal'} onFinish={handleFinish} labelCol={{ span: 8 }}>
+        <Form
+          colon
+          initialValues={{ compressionRate: 100 }}
+          layout={'horizontal'}
+          onFinish={handleFinish}
+          labelCol={{ span: 8 }}
+        >
           <Form.Item>
             <Dragger {...props}>
               <p className="ant-upload-drag-icon">
@@ -107,6 +120,17 @@ export const ImageConversion = ({ title }: { title: string }) => {
                 </Select.Option>
               ))}
             </Select>
+          </Form.Item>
+          <Form.Item name="compressionRate" label="压缩率">
+            <Space>
+              <InputNumber
+                onChange={(val) => setCompressionRate(Number(val))}
+                value={compressionRate}
+                style={{ width: '120px' }}
+                placeholder="1~100之间"
+              />
+              <span>%</span>
+            </Space>
           </Form.Item>
           <Form.Item hidden={targetType !== 'ico'} name={'size'} label={'尺寸'}>
             <Select allowClear onChange={handleChangeSize} value={size} placeholder={'不选择默认不修改尺寸'}>

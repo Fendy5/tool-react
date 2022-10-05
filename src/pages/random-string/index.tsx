@@ -44,12 +44,7 @@ export const RandomString = ({ title }: { title: string }) => {
             <MyCheckbox className={'w-full'} options={checkOptions} />
           </Form.Item>
           <MyInput>
-            <Form.Item
-              className={'grid-1-4'}
-              label="长度"
-              name="len"
-              rules={[{ required: true, message: '请输入字符串长度' }]}
-            >
+            <Form.Item label="长度" name="len" rules={[{ required: true, message: '请输入字符串长度' }]}>
               <Input min={1} type={'number'} placeholder={'请输入字符串长度'} />
             </Form.Item>
           </MyInput>

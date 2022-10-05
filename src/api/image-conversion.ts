@@ -4,8 +4,9 @@
  * @Description
  */
 import request from 'utils/request'
+import { ImageConversionFormProp } from '../types/image-conversion'
 
-export const transformApi = (data: any) => {
+export const transformApi = (data: ImageConversionFormProp) => {
   return request({
     url: '/api/v1/image-conversion/transform',
     method: 'post',

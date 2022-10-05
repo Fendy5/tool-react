@@ -11,8 +11,8 @@ pipeline {
       steps {
         nodejs(nodeJSInstallationName: 'NodeJS 14.17.5', configId: '15077958-c5fc-4bdc-b6ed-803c700399b2') {
           sh 'node -v'
-          sh 'npm install --global yarn'
-          sh 'cnpm install'
+          sh 'yarn install'
+          sh 'yarn upgrade craco-less'
           sh 'yarn build'
         }
       }

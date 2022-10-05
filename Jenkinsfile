@@ -3,14 +3,16 @@ pipeline {
   stages {
     stage('Git Pull') {
       steps {
-        git(credentialsId: 'github', branch: 'main', url: "https://github.com.cnpmjs.org/Fendy5/${env.ItemName}.git")
+        git(credentialsId: 'e39944bd-4ff3-4755-a758-2b23ac136fc6', branch: 'main', url: "git@github.com:Fendy5/${env.ItemName}.git")
       }
     }
 
     stage('Build') {
       steps {
-        nodejs(nodeJSInstallationName: 'NodeJS 16.9.1', configId: '2c822994-4519-4187-90c4-71d6ccee785d') {
-          sh 'yarn install'
+        nodejs(nodeJSInstallationName: 'NodeJS 14.17.5', configId: '15077958-c5fc-4bdc-b6ed-803c700399b2') {
+          sh 'node -v'
+          sh 'npm install --global yarn'
+          sh 'cnpm install'
           sh 'yarn build'
         }
       }
